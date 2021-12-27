@@ -1,0 +1,14 @@
+https://www.geeksforgeeks.org/introduction-of-process-synchronization/
+https://0xax.gitbooks.io/linux-insides/SyncPrim/linux-sync-1.html
+
+1. Pthread library
+2. Semaphore library [ counting semaphores and binary semaphores ] 
+3. Spinlock libarary , linux/spinlock.h 
+   test_and_set( ) operation is a atomic instruction.
+
+4.serializers
+5.path expression
+6.barriers
+7.randezvoous points
+8.optimixtic wait free sync
+...

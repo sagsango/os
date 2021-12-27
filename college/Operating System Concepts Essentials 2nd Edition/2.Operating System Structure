@@ -1,0 +1,138 @@
+Three aspects of operating systems
+1. Services provided by OS
+2. Interface [for users and programmers] provided by OS
+3. Its component and their interconnction.
+
+2.1.Operating-System Services:
+User interface
+Program execution.
+I/O operations.
+File-system manipulation
+Communications
+Error detection
+Resource allocation
+Accounting
+Protection and security
+
+2.2 User and Operaring System Interface
+2.2.1 Command Interpreters
+2.2.2 Graphical User Interfaces
+
+2.3.System Calls
+programes with spesific functionality/function call
+ex:for copy a seouce file to destination file
+Example System Call Sequence:-
+Acquire input file name
+Write prompt to screen
+Accept input
+Acquire output file name
+Write prompt to screen
+Accept input
+Open the input file
+if file doesn't exist, abort
+Create output file
+if file exists, abort
+Loop
+Read from input file
+Write to output file
+Until read fails
+Close output file
+Write completion message to screen
+Terminate normally
+
+2.4.Types of System Calls:6 types of system calls.
+• Process control
+◦ end, abort
+◦ load, execute
+◦ create process, terminate process
+◦ get process attributes, set process attributes
+◦ wait for time
+◦ wait event, signal event
+◦ allocate and free memory
+• File management
+◦ create file, delete file
+◦ open, close
+◦ read, write, reposition
+◦ get file attributes, set file attributes
+• Device management
+◦ request device, release device
+◦ read, write, reposition
+◦ get device attributes, set device attributes
+◦ logically attach or detach devices
+• Information maintenance
+◦ get time or date, set time or date
+◦ get system data, set system data
+◦ get process, file, or device attributes
+◦ set process, file, or device attributes
+• Communications
+◦ create, delete communication connection
+◦ send, receive messages
+◦ transfer status information
+◦ attach or detach remote devices
+
+ => EXAMPLES OF WINDOWS AND UNIX SYSTEM CALLS
+                   Windows                                Unix
+Process            CreateProcess()                        fork()
+Control            ExitProcess()                          exit()
+                   WaitForSingleObject()                  wait()
+                   
+File               CreateFile()                           open()
+Manipulation       ReadFile()                             read()
+                   WriteFile()                            write()
+                   CloseHandle()                          close()
+               
+Device             SetConsoleMode()                       ioctl()
+Manipulation       ReadConsole()                          read()
+                   WriteConsole()                         write()
+                   Console means => Terminal
+       
+Information        GetCurrentProcessID()                  getpid()
+Maintenance        SetTimer()                             alarm()
+                   Sleep()                                sleep()
+                   
+Communication      CreatePipe()                           pipe()
+                   CreateFileMapping()                    shm open()
+                   MapViewOfFile()                        mmap()
+         
+Protection         SetFileSecurity()                      chmod()
+                   InitlializeSecurityDescriptor()        umask()
+                   SetSecurityDescriptorGroup()           chown()
+ 
+printf() => inwoke many system call along with write()
+
+To start a new process, the shell executes a fork() system call. Then, the selected program is loaded into
+memory via an exec() system call, and the program is executed. Depending
+on the way the command was issued, the shell then either waits for the process
+to finish or runs the process “in the background.” In the latter case, the shell
+immediately requests another command. When a process is running in the
+background, it cannot receive input directly from the keyboard, because the
+shell is using this resource. I/O is therefore done through files or through a GUI
+interface. Meanwhile, the user is free to ask the shell to run other programs, to
+monitor the progress of the running process, to change that program’s priority,
+and so on. When the process is done, it executes an exit() system call to
+terminate, returning to the invoking process a status code of 0 or a nonzero
+error code. This status or error code is then available to the shell or other
+programs. Processes are discussed in Chapter 3 with a program example using
+the fork() and exec() system calls.
+
+ 
+ 2.5 System Programs
+• File management
+• Status information
+• File modification
+• Programming-language support
+• Program loading and execution
+• Communications.
+• Background services.
+
+2.6.Operating-System Design and Implementation
+2.6.1.Design Goals
+2.6.2.Mechanisms and Policies
+2.6.3.Implementation
+
+2.7 Operating-System Structure
+2.7.1.Simple Structure
+2.7.2.Layered Approach
+2.7.3.Microkernels
+2.7.4.Modules
+2.7.5.Hybrid Systems

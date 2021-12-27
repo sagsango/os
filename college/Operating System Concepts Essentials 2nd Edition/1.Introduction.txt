@@ -1,0 +1,212 @@
+1.In the 1960s, Moore’s Law predicted
+that the number of transistors on an integrated circuit would double every
+eighteen months, and that prediction has held true.
+
+2.Kernal:A more common definition, and the one that we usually follow, is that the operating system
+is the one program running at all times on the computer—usually called
+the kernel.
+
+3.Mobile operating systems often include not only a core kernel
+but also middleware—a set of software frameworks that provide additional
+services to application developers. For example, each of the two most promi-
+nent mobile operating systems—Apple’s i OS and Google’s Android —features
+a core kernel along with middleware that supports databases, multimedia, and
+graphics (to name only a few).
+
+4.When computer rebooted/powered up first bootstrap program [written in ROM or EEROM] strat running and responsible for load the OS progrm in the kernal , also it load some other system process/daemons outside the kernal.
+On UNIX , the first system process is “init,” and it starts many other daemons.
+
+5.When the CPU is interrupted, it stops what it is doing and immediately
+transfers execution to a fixed location. The fixed location usually contains
+the starting address where the service routine for the interrupt is located.
+The interrupt service routine executes; on completion, the CPU resumes the
+interrupted computation.
+
+
+6. 1kb = 2^(10) bytes
+   1mb = 2^(20) bytes
+   1gb = 2^(30) bytes
+   1tb = 2^(40) bytes
+   1pb = 2^(50) bytes
+   
+7. main memory = RAM/DRAM
+   static programs like bootstrap in ROM/EEPROM.
+   
+8. We try to reside all the data in main memory but it is 1)too small 2)volatile so most computer system have secondary memory[ hard disk drive].
+
+9. register > cache L1 > cache L2 > cache L3 > main memory > solid state disk[ssd] > hard disk > optical disk > magnetic tapes.
+
+10.A device
+controller maintains some local buffer storage and a set of special-purpose
+registers. The device controller is responsible for moving the data between
+the peripheral devices that it controls and its local buffer storage. Typically,
+operating systems have a device driver for each device controller. This device
+driver understands the device controller and provides the rest of the operating
+system with a uniform interface to the device.
+
+11.a) Single Processor System = 1 CPU
+   b)Multi Processor System / Multicore System / Parallel System = more than 1 cpu.
+   c)Multi core =multiple computing cores on a single chip.They
+    can be more efficient than multiple chips with single cores because on-chip
+    communication is faster than between-chip communication. In addition, one
+    chip with multiple cores uses significantly less power than multiple single-core
+    chips.
+   f)It is important to note that while multicore systems are multiprocessor
+    systems, not all multiprocessor systems are multicore,
+   h)blade servers are a relatively recent development in which multiple
+    processor boards, I/O boards, and networking boards are placed in the same
+    chassis. The difference between these and traditional multiprocessor systems
+    is that each blade-processor board boots independently and runs its own
+    operating system. Some blade-server boards are multiprocessor as well, which
+    blurs the lines between types of computers. In essence, these servers     consist of
+multiple independent multiprocessor systems.
+   d)asymmetric multiprocessing = some cpu are boss and other are workers.
+   e)symmetric multiprocessing  = no one is boss all cpu are same [ work pool].
+   f)Clustered System :Clustered systems differ from the multiprocessor
+systems described in Section 1.3.2 in that they are composed of two or more
+individual systems—or nodes—joined together.The generally accepted definition is that clustered
+computers share storage and are closely linked via a local-area network LAN
+or a faster interconnect, such as InfiniBand.
+
+1.5.modern operating systems are interrupt driven.
+A trap (or an exception) is a software-generated interrupt caused
+either by an error (for example, division by zero or invalid memory access)
+or by a specific request from a user program that an operating-system service
+be performed.
+
+1.5.1.Dual-Mode and Multimode Operation
+a)we need two separate modes of operation: user mode
+and kernel mode (also called supervisor mode, system mode, or privileged
+mode). A bit, called the mode bit, is added to the hardware of the computer
+to indicate the current mode: kernel (0) or user (1).
+b)virtual
+machine manager ( VMM )—and the virtualization management software —
+is in control of the system. In this mode, the VMM has more privileges than
+user processes but fewer than the kernel.
+c)The Intel 64 family of CPUs supports four privilege levels,
+
+1.6.Process Management
+The operating system is responsible for the following activities in connec-
+tion with process management:
+-Scheduling processes and threads on the CPU s
+-Creating and deleting both user and system processes
+-Suspending and resuming processes
+-Providing mechanisms for process synchronization
+-Providing mechanisms for process communication
+
+1.7.Memory Management
+a)The central processor reads instructions from main memory during
+the instruction-fetch cycle and both reads and writes data from main memory
+during the data-fetch cycle (on a von Neumann architecture).
+b)The operating system is responsible for the following activities in connec-
+tion with memory management:
+• Keeping track of which parts of memory are currently being used and who
+is using them
+• Deciding which processes (or parts of processes) and data to move into
+and out of memory
+• Allocating and deallocating memory space as needed
+
+1.8.Storage Management
+To make the computer system convenient for users, the operating system
+provides a uniform, logical view of information storage. The operating system
+abstracts from the physical properties of its storage devices to define a logical storage unit, the file. The operating system maps files onto physical media and accesses these files via the storage devices.
+
+1.8.1.File-System Management
+The operating system is responsible for the following activities in connec-
+tion with file management:
+-Creating and deleting files
+-Creating and deleting directories to organize files
+-Supporting primitives for manipulating files and directories
+-Mapping files onto secondary storage
+-Backing up files on stable (nonvolatile) storage media
+
+1.8.2.Mass-Storage Management/disk management
+The operating system is
+responsible for the following activities in connection with disk management:
+• Free-space management
+• Storage allocation
+• Disk scheduling
+
+1.8.3 Caching
+Caching is an important principle of computer systems. Here’s how it works.
+Information is normally kept in some storage system (such as main memory).
+As it is used, it is copied into a faster storage system—the cache —on a
+temporary basis. When we need a particular piece of information, we first
+check whether it is in the cache. If it is, we use the information directly from
+the cache. If it is not, we use the information from the source, putting a copy
+in the cache under the assumption that we will need it again soon.
+
+Instructions also kept in cache, if not found CPU have to wait for fetching.
+
+In a hierarchical storage structure, the same data may appear in different
+levels of the storage system. For example, suppose that an integer A that is
+to be incremented by 1 is located in file B, and file B resides on hard disk.
+The increment operation proceeds by first issuing an I/O operation to copy the
+disk block on which A resides to main memory. This operation is followed by
+copying A to the cache and to an internal register. Thus, the copy of A appears
+in several places: on the hard disk, in main memory, in the cache, and in an
+internal register (see Figure 1.12). Once the increment takes place in the internal
+register, the value of A differs in the various storage systems. The value of A
+becomes the same only after the new value of A is written from the internal
+register back to the hard disk.
+
+The situation becomes more complicated in a multiprocessor environment
+where, in addition to maintaining internal registers, each of the CPU s also
+contains a local cache (Figure 1.6). In such an environment, a copy of A may
+exist simultaneously in several caches. Since the various CPU s can all execute
+in parallel, we must make sure that an update to the value of A in one cache
+is immediately reflected in all other caches where A resides. This situation is
+called cache coherency, and it is usually a hardware issue (handled below the
+operating-system level).
+
+
+1.8.4 I.O System
+One of the purposes of an operating system is to hide the peculiarities of specific hardware devices from the user. For example, in UNIX , the peculiarities of I/O devices are hidden from the bulk of the operating system itself by the I/O subsystem. The I/O subsystem consists of several components:
+• A memory-management component that includes buffering, caching, and
+  spooling
+• A general device-driver interface
+• Drivers for specific hardware devices
+
+1.9 Protection and Security
+
+
+1.10.Kernel Data Structures
+List[singly,doubly,circular,all types]
+Stack
+Queues 
+Trees:[ general,binarymbinary search tree, balanced binary search tree and all others]
+Hash Function and map/ hash map
+Bit map [ 0 or 1 at perticular index]
+
+LINUX KERNEL DATA STRUCTURES
+The data structures used in the Linux kernel are available in the kernel source
+code. The include file <linux/list.h> provides details of the linked-list
+data structure used throughout the kernel. A queue in Linux is known as
+a kfifo, and its implementation can be found in the kfifo.c file in the
+kernel directory of the source code. Linux also provides a balanced binary
+search tree implementation using red-black trees. Details can be found in the
+include file <linux/rbtree.h>.
+
+
+1.11 Computing Environments
+1.11.1. Traditional Computing:
+1.11.2 Mobile Computing
+1.11.3 Distributed System
+1.11.4 Client Server Computing [ extended Disrtibuted system]
+1.11.5 Peer-to-Peer Computing  [ extended peer-to-peer computing]
+1.11.6 Vertualization : Like-JVM,Multiple OS on a machine
+1.11.7 Cloud Computing [ extension of Vertualization ]
+1.11.8 Real Time Embedded Sysyem
+
+1.12 Open-Source Operating System
+Open-source operating systems are those available in source-code
+format rather than as compiled binary code. Linux is the most famous open-
+source operating system, while Microsoft Windows is a well-known example
+of the opposite closed-source approach. Apple’s Mac OS X and i OS operating
+systems comprise a hybrid approach. They contain an open-source kernel
+named Darwin yet include proprietary, closed-source components as well.
+Starting with the source code allows the programmer to produce binary
+code that can be executed on a system. Doing the opposite —reverse engi-
+neering the source code from the binaries—is quite a lot of work, and useful
+items such as comments are never recovered.
+
